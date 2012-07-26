@@ -1,6 +1,6 @@
 /*!
  * Espresso Framework
- * Version 0.3.1
+ * Version 0.4.0
  * 
  * This is a JavaScript **FRAMEWORK**, not a library. In its first versions,
  * it depends lightly on jQuery, which will eventually be
@@ -42,7 +42,7 @@
  * @version 0.3.1
  */
 ;(function(espresso, $, espressoConfig, ctx) {
-    var VERSION = '0.3.1';
+    var VERSION = '0.4.0';
 
     var config = extend(true, {
             context: ctx,
@@ -67,9 +67,9 @@
         }, espressoConfig || {});
 
     var constants = {},         // Used for global readonly vars
-        localConstants = {},	// Used for local espresso readonly vars
+        localConstants = {},    // Used for local espresso readonly vars
         used = {},              // The "use" cache; cache for "used" files
-        pending = {},		    // Used for monitoring pending dependency loads
+        pending = {},           // Used for monitoring pending dependency loads
         readyEvents,            // EventManager for handling library loads
         ie = $.browser.msie;    // * sigh.. *
 
@@ -889,51 +889,51 @@ espresso.Interface('espresso.util.TwoDIterator', {
 
 espresso.Class('espresso.util.EventManager', function($) {
 
-	var events,
-		eventData,
-		config = {
-			autofire: false     // if true, after fire() is called once, all future listeners will be immediately autofired
-		};
+    var events,
+        eventData,
+        config = {
+            autofire: false     // if true, after fire() is called once, all future listeners will be immediately autofired
+        };
 
-	function createType(type, fn) {
-		var queue = new espresso.collections.EventQueue(fn);
-		events.put(type, queue);
-		return queue;
-	}
+    function createType(type, fn) {
+        var queue = new espresso.collections.EventQueue(fn);
+        events.put(type, queue);
+        return queue;
+    }
 
-	return {
+    return {
 
-		EventManager: function(cfg) {
-			$.extend(config, cfg);
-			events = new espresso.collections.HashMap;
-			eventData = new espresso.collections.HashMap;
-		},
+        EventManager: function(cfg) {
+            $.extend(config, cfg);
+            events = new espresso.collections.HashMap;
+            eventData = new espresso.collections.HashMap;
+        },
 
-		listen: function(type, fn, first) {
-			var queue = events.get(type), data;
-			if(!queue) createType(type, fn);
-			else {
-				queue.add(fn, first);
-				if(config.autofire && queue.hasFired()) {
-					data = eventData.get(type);
-					queue.flush(data.args, data.scope);
-				}
-			}
-			return this;
-		},
+        listen: function(type, fn, first) {
+            var queue = events.get(type), data;
+            if(!queue) createType(type, fn);
+            else {
+                queue.add(fn, first);
+                if(config.autofire && queue.hasFired()) {
+                    data = eventData.get(type);
+                    queue.flush(data.args, data.scope);
+                }
+            }
+            return this;
+        },
 
-		fire: function(type, args, scope, persist) {
-			var queue = events.get(type);
-			if(!queue) queue = createType(type);
-			queue.flush(args, scope, persist);
-			eventData.put(type, {
-				args: args,
-				scope: scope
-			});
-			return this;
-		}
+        fire: function(type, args, scope, persist) {
+            var queue = events.get(type);
+            if(!queue) queue = createType(type);
+            queue.flush(args, scope, persist);
+            eventData.put(type, {
+                args: args,
+                scope: scope
+            });
+            return this;
+        }
 
-	};
+    };
 
 });
 
@@ -1197,23 +1197,23 @@ espresso.Class('espresso.collections.SparsedMatrix', function($) {
         },
 
         toString: function() {
-        	var nds = [];
-        	for(var node in nds) nds.push('{' + node + '}');
-        	return [
-        	    "Length: " + length,
-        	    // calling any function on the iterator calls getNode() which will implicitly create a node, so just check the length first
-        	    "Iterator: " + (length ? ('{' + iterator.current().x + ',' + iterator.current().y + '}') : 'null'),
-        	    "Nodes: " + nds.join(', ')
-        	].join('\n');
+            var nds = [];
+            for(var node in nds) nds.push('{' + node + '}');
+            return [
+                "Length: " + length,
+                // calling any function on the iterator calls getNode() which will implicitly create a node, so just check the length first
+                "Iterator: " + (length ? ('{' + iterator.current().x + ',' + iterator.current().y + '}') : 'null'),
+                "Nodes: " + nds.join(', ')
+            ].join('\n');
         },
 
         debug: function(logger) {
-        	if(logger) {
-        		logger('Length', length);
-        		// calling any function on the iterator calls getNode() which will implicitly create a node, so just check the length first
-        		logger('Iterator', length ? { x: iterator.current().x, y: iterator.current().y } : null);
-        		logger('Nodes', nodes);
-        	}
+            if(logger) {
+                logger('Length', length);
+                // calling any function on the iterator calls getNode() which will implicitly create a node, so just check the length first
+                logger('Iterator', length ? { x: iterator.current().x, y: iterator.current().y } : null);
+                logger('Nodes', nodes);
+            }
         },
 
         up:           curriedMove('up'),
@@ -1367,7 +1367,7 @@ espresso.Class('espresso.collections.EventQueue', function($) {
     return {
 
         EventQueue:function(fn) {
-    		_queue = [];
+            _queue = [];
             this.add(fn);
         },
 
@@ -1398,7 +1398,7 @@ espresso.Class('espresso.collections.EventQueue', function($) {
         },
 
         hasFired: function() {
-        	return _hasFired;
+            return _hasFired;
         }
 
     };
@@ -1420,13 +1420,146 @@ espresso.Error('espresso.collections.EventQueue.QueueDepletedException', 'The qu
 
 var $ = espresso.$;
 
+espresso.Class('espresso.framework.Session', function($) {
+
+    return {
+
+        Session: function() {
+
+        }
+
+    };
+
+});
+
+espresso.Class('espresso.framework.Process', function($) {
+    var id, path, job, app, self;
+
+    return {
+
+        Process: function(_app, _path, _job) {
+            self = this;
+            path = _path;
+            job = _job;
+            app = _app;
+            id = app.processes().add(this);
+        },
+
+        invoke: function(options) {
+            var result;
+
+            app.getApplicationWorker((path = path.split('.')).shift(), function(worker) {
+                options = options || {};
+                worker = espresso.Namespace(path.join('.'), worker) || worker;
+                result = worker[job].apply(worker, [].concat(options.args || [])) || new espresso.framework.ProcessResult;
+                result.process(self);
+                result.state(espresso.framework.Process.COMPLETE);
+                (options.callback || $.noop)(result);
+                app.processes().remove(this);
+            });
+
+            return result;
+        },
+
+        path: function() {
+            return path;
+        },
+
+        command: function() {
+            return job;
+        },
+
+        toString: function() {
+            return ''+id;
+        },
+
+        valueOf: function() {
+            return 1*id;
+        }
+
+    };
+
+}); 
+
+espresso.Static('espresso.framework.Process.READY', 0);
+espresso.Static('espresso.framework.Process.COMPLETE', 1);
+
+espresso.Class('espresso.framework.collections.Processes', function($) {
+    var processes, history;
+
+    return {
+
+        Processes: function() {
+            processes = {};
+            history = [];
+        },
+
+        add: function(process) {
+            var id = history.push([process.path(), process.command()]);
+            processes[id] = process;
+            return id;
+        },
+
+        remove: function(process) {
+            processes[process] = undefined;
+            delete processes[process];
+        }
+
+    };
+
+});
+
+espresso.Class('espresso.framework.ProcessResult', function($) {
+    var data = {};
+
+    function prop(k, v) {
+        return data[k] = typeof v != 'undefined' ? v : data[k];
+    }
+
+    return {
+
+        ProcessResult: function(value, options) {
+            options = options || {};
+            this.value(value);
+            this.state(options.state || espresso.framework.Process.READY);
+            this.session(options.session);
+            this.assert(options.assert);
+            this.process(options.process);
+        },
+
+        value: function(v) {
+            return prop('value', v);
+        },
+
+        state: function(v) {
+            return prop('state', v || data.value);
+        },
+
+        process: function(v) {
+            return prop('process', v);
+        },
+
+        session: function(v) {
+            espresso.extend(data, { session: v });
+            return this;
+        },
+
+        assert: function(assertion, logger) {
+            espresso.extend(data, { assert: [assertion, logger] });
+            return this;
+        }
+
+    };
+
+});
+
 /**
  * @package espresso.framework
  * @class Application
  * @author peteromano
  */
 espresso.Class('espresso.framework.Application', function($) {
-    var self, name, context, workers, readyQueue;
+    var self, name, context, workers, readyQueue, processes, session;
 
     var config = {};
 
@@ -1467,13 +1600,19 @@ espresso.Class('espresso.framework.Application', function($) {
     return {
 
         Application: function(_name, _config, workerConfig, _context) {
-            var collections = espresso.collections;
+            var collections = espresso.collections,
+                framework = espresso.framework;
+
             name = _name;
             context = _context;
             workers = new collections.HashMap;
             readyQueue = new collections.EventQueue;
+            session = new framework.Session;
+            processes = new framework.collections.Processes;
             self = this.setConfig(_config);
+
             processWorkers(workerConfig);
+
             return this;
         },
 
@@ -1523,14 +1662,15 @@ espresso.Class('espresso.framework.Application', function($) {
         },
 
         execute: function(path, job, options) {
-            var result;
+            return new espresso.framework.Process(this, path, job).invoke(options);
+        },
 
-            this.getApplicationWorker((path = path.split('.')).shift(), function(worker) {
-                worker = espresso.Namespace(path.join('.'), worker) || worker;
-                ((options = options || {}).callback || $.noop)(result = worker[job].apply(worker, [].concat(options.args || [])));
-            });
+        processes: function() {
+            return processes;
+        },
 
-            return result;
+        session: function() {
+            return session;
         }
 
     };
@@ -1624,7 +1764,7 @@ espresso.Class('espresso.framework.data.DataModel', function($) {
 var apps = {}, plugins = espresso.plugins;
 
 function allyourbase(arebelongtous) {
-	return arebelongtous || {};
+    return arebelongtous || {};
 }
 
 plugins.Application = {
@@ -1633,7 +1773,7 @@ plugins.Application = {
         var loaded = false,
             configs, workers,
             initialize,
-        	bootloader;
+            bootloader;
 
         options = allyourbase(options);
         configs = allyourbase(options.Configuration);
@@ -1653,7 +1793,7 @@ plugins.Application = {
         app.initialize = function() {
             if(loaded) return this;
             else loaded = true;
-        	initialize.call(this, this.getConfig(), context);
+            initialize.call(this, this.getConfig(), context);
             return this;
         };
 
@@ -1681,7 +1821,7 @@ plugins.ApplicationWorker = {
         worker.initialize = function() {
             if(loaded) return this;
             else loaded = true;
-        	initialize.apply(this, arguments);
+            initialize.apply(this, arguments);
             return this;
         };
 
@@ -1698,8 +1838,13 @@ plugins.ApplicationWorker = {
 
 };
 
+plugins.ProcessResult = function(value, options) {
+    return new espresso.framework.ProcessResult(value, options);
+};
+
 espresso.Static('Application', plugins.Application.create, espresso);
 espresso.Static('ApplicationWorker', plugins.ApplicationWorker.create, espresso);
 espresso.Static('getApplication', function(name) { return apps[name] || null; }, espresso);
+espresso.Static('ProcessResult', plugins.ProcessResult, espresso);
 
 })(this.espresso);
