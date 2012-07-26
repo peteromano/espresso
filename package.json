@@ -1,0 +1,31 @@
+{
+  "name": "espresso-js",
+  "version": "0.4.0",
+  "title": "Espresso JS",
+  "description": "Espresso JavaScript framework",
+  "homepage": "https://github.com/peteromano/espresso-js",
+  "author": {
+    "name": "Pete Romano",
+    "email": "pete.romano@yahoo.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/peteromano/espresso-js"
+  },
+  "bugs": {
+  },
+  "licenses": [
+    {
+      "type": "MIT"
+    },
+    {
+      "type": "GPL"
+    }
+  ],
+  "keywords": [],
+  "engines": {
+    "node": ">= 0.6.0"
+  },
+  "scripts": {
+  }
+}
