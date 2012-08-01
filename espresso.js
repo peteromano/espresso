@@ -1,48 +1,33 @@
 /*!
- * Espresso Framework
- * Version 0.4.0
- * 
- * This is a JavaScript **FRAMEWORK**, not a library. In its first versions,
- * it depends lightly on jQuery, which will eventually be
- * rewritten with no immediate dependencies.
- * 
- * This framework is meant to enforce strict OOP disciplines as the primary goal
- * (provided by espresso "core" and "base").
+ * Copyright (c) 2012 Pete Romano
  *
- * Supports:
- * 1) Single inheritance ("parasitic" inheritance; using mixins)
- * 2) Private vars
- * 3) Strict public interface
- * 4) Abstract classes/methods
- * 5) Singleton classes
- * 6) Anonymous classes
- * 7) Interfaces
- * 8) Loose plugin architecture (greatfully underdeveloped)
- * 9) Dependency manager/loader
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without
+ * restriction, including without limitation the rights to use,
+ * copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following
+ * conditions:
  *
- * Does NOT support:
- * 1) Multiple inheritance
- * 2) Protected fields (use a public field or public getter to expose a field to a child class)
- * 3) Prototypal inheritance (instanceof operator won't get it)
- * 
- * Espresso "base" includes:
- * 1) espresso.collections.*
- * 2) espresso.util.*
- * 3) espresso.framework.*
- * 4) espresso.Application and espresso.ApplicationWorker plugins
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
  *
- * Notes:
- * 1) Constructor must be name of the class
- * 2) Base constructor may be called from within child constructor via this['@super']()
- * 3) Parent class methods may be called from within child methods via this['@parent']()
- * 4) Constructor can only return 'this'
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
  *
  * @fileOverview Espresso JavaScript framework
  * @author Pete Romano
- * @version 0.3.1
+ * @version 0.4.2
  */
 ;(function(espresso, $, espressoConfig, ctx) {
-    var VERSION = '0.4.0';
+    var VERSION = '0.4.2';
 
     var config = extend(true, {
             context: ctx,
