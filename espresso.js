@@ -24,13 +24,14 @@
  *
  * @fileOverview Espresso JavaScript framework
  * @author Pete Romano
- * @version 0.4.2
+ * @version 0.4.3
  */
-;(function(espresso, $, espressoConfig, ctx) {
-    var VERSION = '0.4.2';
+;(function(espresso, $, require, espressoConfig, ctx) {
+    var VERSION = '0.4.3';
 
     var config = extend(true, {
             context: ctx,
+            require: undefined,
             jQuery: $,
             jQueryNoConflict: false,    // revert global jQuery and $ vars to previous values
             environment: 'prod',
@@ -74,7 +75,13 @@
      */
     espresso = assign('espresso', espresso || {}, this, true);
 
-    if(!$) error('espresso', '(main)', 'Checking jQuery Dependency', 'jQuery dependency not found');
+    !require && (ctx.require = require);
+
+    if(!$) error('espresso', '#[main]', 'Checking jQuery Dependency', 'jQuery dependency not found');
+
+    function require() {
+        return use.apply(this, arguments);
+    }
 
     function namespace(name, root) {
         if(!name) return name;
@@ -832,7 +839,7 @@
         'espresso.plugins':      {}
     });
 
-}(this.espresso, this.jQuery, this.espressoConfig, this));
+}(this.espresso, this.jQuery, this.require, this.espressoConfig, this));
 
 /**
  * @package espresso.util.Config
