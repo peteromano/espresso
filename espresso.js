@@ -75,11 +75,11 @@
      */
     espresso = assign('espresso', espresso || {}, this, true);
 
-    !require && (ctx.require = require);
+    !require && (ctx.require = rekwire);
 
     if(!$) error('espresso', '#[main]', 'Checking jQuery Dependency', 'jQuery dependency not found');
 
-    function require() {
+    function rekwire() {
         return use.apply(this, arguments);
     }
 
