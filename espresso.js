@@ -24,10 +24,10 @@
  *
  * @fileOverview Espresso JavaScript framework
  * @author Pete Romano
- * @version 0.4.3
+ * @version 0.4.4
  */
 ;(function(espresso, $, require, espressoConfig, ctx) {
-    var VERSION = '0.4.3';
+    var VERSION = '0.4.4';
 
     var config = extend(true, {
             context: ctx,
