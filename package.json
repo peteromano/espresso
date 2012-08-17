@@ -1,6 +1,6 @@
 {
   "name": "espresso-js",
-  "version": "0.4.4",
+  "version": "0.4.5",
   "title": "Espresso JS",
   "description": "Espresso JavaScript framework",
   "homepage": "https://github.com/peteromano/espresso-js",
@@ -8,6 +8,10 @@
     "name": "Pete Romano",
     "email": "pete.romano@yahoo.com"
   },
+  "contributors":[{
+    "name": "Michael Benin",
+    "email": "beninmichael@gmail.com"
+  }],
   "repository": {
     "type": "git",
     "url": "https://github.com/peteromano/espresso-js"

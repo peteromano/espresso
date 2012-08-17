@@ -23,11 +23,12 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  *
  * @fileOverview Espresso JavaScript framework
- * @author Pete Romano
- * @version 0.4.4
+ * @author Pete Romano <https://github.com/peteromano>
+ * @contributor Michael Benin <https://github.com/michaelbenin>
+ * @version 0.4.5
  */
 ;(function(espresso, $, require, espressoConfig, ctx) {
-    var VERSION = '0.4.4';
+    var VERSION = '0.4.5';
 
     var config = extend(true, {
             context: ctx,
@@ -57,7 +58,7 @@
         used = {},              // The "use" cache; cache for "used" files
         pending = {},           // Used for monitoring pending dependency loads
         readyEvents,            // EventManager for handling library loads
-        ie = $.browser.msie;    // * sigh.. *
+        ie = /MSIE+/i.test(ctx.navigator.userAgent); // Sigh...
 
     constant('LOGGING_TPL',         '[{type}] in {klass}#{method}: {task}: {message} - Espresso');
     constant('R_FUNC_NAME',         /(?:function\s+((?:\w|\$)+)(?:\n|.)*)|(?:\n|.)*/);
