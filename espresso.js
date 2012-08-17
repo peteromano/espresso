@@ -25,10 +25,10 @@
  * @fileOverview Espresso JavaScript framework
  * @author Pete Romano <https://github.com/peteromano>
  * @contributor Michael Benin <https://github.com/michaelbenin>
- * @version 0.4.5
+ * @version 0.4.6
  */
-;(function(espresso, $, require, espressoConfig, ctx) {
-    var VERSION = '0.4.5';
+;(function(espresso, $, require, espressoConfig, ctx, undefined) {
+    var VERSION = '0.4.6';
 
     var config = extend(true, {
             context: ctx,
@@ -840,7 +840,7 @@
         'espresso.plugins':      {}
     });
 
-}(this.espresso, this.jQuery, this.require, this.espressoConfig, this));
+}(this.espresso, this.jQuery || this.$, this.require, this.espressoConfig, this, this.undefined));
 
 /**
  * @package espresso.util.Config
