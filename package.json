@@ -1,8 +1,8 @@
 {
   "name": "espresso-js",
   "version": "0.4.6",
-  "title": "Espresso JS",
-  "description": "Espresso JavaScript framework",
+  "title": "Espresso OOP JavaScript library",
+  "description": "Espresso OOP JavaScript library",
   "homepage": "https://github.com/peteromano/espresso-js",
   "author": {
     "name": "Pete Romano",

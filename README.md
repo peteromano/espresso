@@ -1,4 +1,4 @@
 espresso-js
 ===========
 
-Espresso JavaScript framework
+Espresso OOP JavaScript library
