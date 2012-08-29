@@ -1,4 +1,4 @@
-espresso-js
+espresso-framework-js
 ===========
 
-Espresso JavaScript framework
+Espresso JavaScript client library
