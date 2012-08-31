@@ -25,10 +25,10 @@
  * @fileOverview Espresso JavaScript framework
  * @author Pete Romano <https://github.com/peteromano>
  * @contributor Michael Benin <https://github.com/michaelbenin>
- * @version 0.5.3
+ * @version 0.5.4
  */
 ;(function(espresso, $, require, espressoConfig, ctx, undefined) {
-    var VERSION = '0.5.3';
+    var VERSION = '0.5.4';
 
     var config = extend(true, {
             context: ctx,
@@ -41,6 +41,7 @@
                 prefix: '',
                 minifySuffix: '.compressed',
                 minify: false,
+                compressed: false,
                 depsSuffix: '.deps',
                 version: '',
                 versionSuffix: '-{version}',
@@ -324,7 +325,7 @@
                         path.replace(constant('R_USE_DOT'), '/').replace(constant(toBool(attrs.prefix) ? 'R_USE_LAST_SLASH' : 'R_USE_NOTHING'), '/' + (attrs.prefix || '') + '$1'),
                         toBool(attrs.version) ? attrs.versionSuffix : '',
                         toBool(attrs.withDependencies || attrs.withAll) ? attrs.depsSuffix : '',
-                        toBool(attrs.minify) ? attrs.minifySuffix : '',
+                        toBool(attrs.minify || attrs.compressed) ? attrs.minifySuffix : '',
                         '.js'
                     ].join('');
 
