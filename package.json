@@ -4,32 +4,20 @@
   "title": "Espresso JavaScript library",
   "description": "Espresso JavaScript library for Espresso framework",
   "homepage": "https://github.com/peteromano/espresso-framework-js",
+  "keywords": ["espresso", "espresso-framework", "espresso-framework-core", "espresso-framework-js"],
   "author": {
     "name": "Pete Romano",
     "email": "pete.romano@yahoo.com"
   },
-  "contributors":[{
-    "name": "Michael Benin",
-    "email": "beninmichael@gmail.com"
-  }],
   "repository": {
     "type": "git",
     "url": "https://github.com/peteromano/espresso-framework-js"
   },
   "bugs": {
+    "url": "https://github.com/peteromano/espresso-framework-js/issues"
   },
-  "licenses": [
-    {
-      "type": "MIT"
-    },
-    {
-      "type": "GPL"
-    }
-  ],
-  "keywords": [],
+  "license": "MIT",
   "engines": {
     "node": ">= 0.6.0"
-  },
-  "scripts": {
   }
 }
