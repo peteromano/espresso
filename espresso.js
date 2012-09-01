@@ -25,10 +25,10 @@
  * @fileOverview Espresso JavaScript framework
  * @author Pete Romano <https://github.com/peteromano>
  * @contributor Michael Benin <https://github.com/michaelbenin>
- * @version 0.5.4
+ * @version 0.5.5
  */
 ;(function(espresso, $, require, espressoConfig, ctx, undefined) {
-    var VERSION = '0.5.4';
+    var VERSION = '0.5.5';
 
     var config = extend(true, {
             context: ctx,
