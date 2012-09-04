@@ -1,7 +1,7 @@
 {
   "name": "espresso.vendor.js.espresso",
   "version": "0.5.6",
-  "title": "Espresso JavaScript Library",
+  "title": "espresso.vendor.js.espresso",
   "description": "Espresso JavaScript library for Espresso framework",
   "homepage": "https://github.com/peteromano/espresso.vendor.js.espresso",
   "keywords": ["espresso", "espresso.project", "espresso.framework.core", "espresso.vendor.js.espresso"],
