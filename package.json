@@ -1,20 +1,20 @@
 {
-  "name": "espresso.vendor.js.espresso",
+  "name": "espresso.vendor.espresso",
   "version": "0.5.6",
-  "title": "espresso.vendor.js.espresso",
+  "title": "espresso.vendor.espresso",
   "description": "Espresso JavaScript library for Espresso framework",
-  "homepage": "https://github.com/peteromano/espresso.vendor.js.espresso",
-  "keywords": ["espresso", "espresso.project", "espresso.framework.core", "espresso.vendor.js.espresso"],
+  "homepage": "https://github.com/peteromano/espresso.vendor.espresso",
+  "keywords": ["espresso", "espresso-js", "espresso.framework.core", "espresso.vendor.espresso"],
   "author": {
     "name": "Pete Romano",
     "email": "pete.romano@yahoo.com"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/peteromano/espresso.vendor.js.espresso"
+    "url": "https://github.com/peteromano/espresso.vendor.espresso"
   },
   "bugs": {
-    "url": "https://github.com/peteromano/espresso.vendor.js.espresso/issues"
+    "url": "https://github.com/peteromano/espresso.vendor.espresso/issues"
   },
   "license": "MIT",
   "engines": {
