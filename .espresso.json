@@ -1,8 +1,8 @@
 {
   "vendor": {
     "lib": {
-      "espresso.js": "espresso.js",
-      "espresso.compressed.js": "espresso.compressed.js"
+      "espresso.js": "lib/espresso.js",
+      "espresso.compressed.js": "lib/espresso.compressed.js"
     }
   }
 }

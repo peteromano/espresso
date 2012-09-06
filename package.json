@@ -1,6 +1,6 @@
 {
   "name": "espresso.vendor.espresso",
-  "version": "0.5.11-1",
+  "version": "0.5.11-2",
   "title": "espresso.vendor.espresso",
   "description": "Espresso JavaScript library for Espresso framework",
   "homepage": "https://github.com/peteromano/espresso.vendor.espresso",
@@ -8,6 +8,10 @@
   "author": {
     "name": "Pete Romano",
     "email": "pete.romano@yahoo.com"
+  },
+  "main": "./lib/espresso",
+  "directories": {
+      "lib": "./lib"
   },
   "dependencies": {
     "jquery": "~1.7.0"
