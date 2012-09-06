@@ -24,17 +24,28 @@
  *
  * @fileOverview Espresso JavaScript framework
  * @author Pete Romano <https://github.com/peteromano>
- * @contributor Michael Benin <https://github.com/michaelbenin>
- * @version 0.5.6
  */
-;(function(espresso, $, require, espressoConfig, ctx, undefined) {
-    var VERSION = '0.5.6';
+;(function(espressoConfig, undefined, ctx, isCommonJS, espresso, $, require, _, Backbone) {
+    //'use strict';
+
+    var VERSION = '0.5.11';
+
+    if(isCommonJS) {
+        ctx = global;
+        require = ctx.require;
+        $ = require('jquery');
+        //_ = require('_');
+        //Backbone = require('Backbone');
+    }
 
     var config = extend(true, {
+            isCommonJS: isCommonJS || false,
             context: ctx,
-            require: undefined,
+            require: require,
             jQuery: $,
             jQueryNoConflict: false,    // revert global jQuery and $ vars to previous values
+            underscore: _,
+            Backbone: Backbone,
             environment: 'prod',
             loader: {
                 classPath: '/',
@@ -60,7 +71,7 @@
         used = {},              // The "use" cache; cache for "used" files
         pending = {},           // Used for monitoring pending dependency loads
         readyEvents,            // EventManager for handling library loads
-        ie = /MSIE+/i.test(ctx.navigator.userAgent); // Sigh...
+        ie = !isCommonJS && /MSIE+/i.test(ctx.navigator.userAgent); // Sigh...
 
     constant('LOGGING_TPL',         '[{type}] in {klass}#{method}: {task}: {message} - Espresso');
     constant('R_FUNC_NAME',         /(?:function\s+((?:\w|\$)+)(?:\n|.)*)|(?:\n|.)*/);
@@ -76,11 +87,11 @@
     /**
      * @namespace
      */
-    espresso = assign('espresso', espresso || {}, this, true);
+    ctx.espresso = espresso = assign('espresso', espresso || {}, isCommonJS ? module.exports : ctx, true);
 
     !require && (ctx.require = rekwire);
 
-    if(!$) error('espresso', '#[main]', 'Checking jQuery Dependency', 'jQuery dependency not found');
+    if(!$) error('espresso', '[core]', 'Checking jQuery Dependency', 'jQuery dependency not found');
 
     function rekwire() {
         return use.apply(this, arguments);
@@ -88,7 +99,7 @@
 
     function namespace(name, root) {
         if(!name) return name;
-        var path = name instanceof Array ? name : name.split('.'), o = root || window, next;
+        var path = name instanceof Array ? name : name.split('.'), o = root || ctx, next;
         while(next = path.shift()) if(!o[next] || !(o = o[next])) o = o[next] = {};
         return o;
     }
@@ -262,7 +273,7 @@
 
     function objectExists(name, root) {
         if(!name) return name;
-        var path = name instanceof Array ? name : name.split('.'), o = root || window, next;
+        var path = name instanceof Array ? name : name.split('.'), o = root || ctx, next;
         while(next = path.shift())
             if(!o[next]) return false;
             else o = o[next];
@@ -778,13 +789,13 @@
          * @methodOf espresso
          * @see espresso.use
          */
-        'espresso.require':      lang.Package.use,
+        'espresso.require':      require,
         /**
          * @name use
          * @methodOf espresso
          * @see espresso.lang.Package.use
          */
-        'espresso.use':          lang.Package.use,
+        'espresso.use':          isCommonJS ? require : lang.Package.use,
         /**
          * @name version
          * @methodOf espresso
@@ -842,7 +853,17 @@
         'espresso.plugins':      {}
     });
 
-}(this.espresso, this.jQuery || this.$, this.require, this.espressoConfig, this, this.undefined));
+})(
+    this.espressoConfig,
+    this.undefined,
+    this,
+    typeof global != 'undefined',
+    this.espresso,
+    this.jQuery || this.$,
+    this.require,
+    this._,
+    this.Backbone
+);
 
 /**
  * @package espresso.util.Config
