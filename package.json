@@ -1,10 +1,10 @@
 {
-  "name": "espresso.vendor.espresso",
-  "version": "0.6.3-1",
-  "title": "espresso.vendor.espresso",
-  "description": "Espresso JavaScript library for Espresso framework",
-  "homepage": "https://github.com/peteromano/espresso.vendor.espresso",
-  "keywords": ["espresso", "espresso-js", "espresso.framework.core", "espresso.vendor.espresso"],
+  "name": "jetfuel.vendor.espresso",
+  "version": "0.6.3-2",
+  "title": "jetfuel.vendor.espresso",
+  "description": "Espresso vendor library for JetFuel projects.",
+  "homepage": "https://github.com/peteromano/jetfuel.vendor.espresso",
+  "keywords": ["espresso", "jetfuel"],
   "author": {
     "name": "Pete Romano",
     "email": "pete.romano@yahoo.com"
@@ -18,10 +18,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/peteromano/espresso.vendor.espresso"
+    "url": "https://github.com/peteromano/jetfuel.vendor.espresso"
   },
   "bugs": {
-    "url": "https://github.com/peteromano/espresso.vendor.espresso/issues"
+    "url": "https://github.com/peteromano/jetfuel.vendor.espresso/issues"
   },
   "license": "MIT",
   "engines": {

@@ -1,4 +1,4 @@
-espresso-js
-===========
+jetfuel.vendor.espresso
+=======================
 
-Espresso JavaScript client library
+Espresso vendor library for JetFuel projects.
