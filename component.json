@@ -1,6 +1,6 @@
 {
     "name": "espresso",
-    "version": "0.6.5",
+    "version": "1.0.0",
     "main": ["./espresso.js", "./espresso.compressed.js"],
     "dependencies": {
         "jquery": "~1.7.0"
