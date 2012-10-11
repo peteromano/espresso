@@ -1,7 +1,7 @@
 {
-  "name": "jetfuel.vendor.espresso",
-  "version": "0.6.5-1",
-  "title": "jetfuel.vendor.espresso",
+  "name": "espresso",
+  "version": "1.0.0",
+  "title": "espresso",
   "description": "Espresso vendor library for JetFuel projects.",
   "homepage": "https://github.com/peteromano/espresso",
   "keywords": ["espresso", "jetfuel", "jetrunner"],
@@ -9,10 +9,7 @@
     "name": "Pete Romano",
     "email": "pete.romano@yahoo.com"
   },
-  "main": "./lib/espresso",
-  "directories": {
-      "lib": "./lib"
-  },
+  "main": "./espresso",
   "dependencies": {
     "jquery": "~1.7.0"
   },

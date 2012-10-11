@@ -1,4 +1,4 @@
-jetfuel.vendor.espresso
-=======================
+espresso
+========
 
 Espresso vendor library for JetFuel projects.

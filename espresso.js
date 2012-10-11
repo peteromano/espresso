@@ -28,7 +28,7 @@
 ;(function(espressoConfig, undefined, ctx, isCommonJS, espresso, $, require, _, Backbone) {
     //'use strict';
 
-    var VERSION = '0.6.5';
+    var VERSION = '1.0.0';
 
     if(isCommonJS) {
         ctx = global;
