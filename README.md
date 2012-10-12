@@ -1,4 +1,4 @@
 espresso
 ========
 
-Espresso vendor library for JetFuel projects.
+Espresso library for OOP design patterns.
