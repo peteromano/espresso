@@ -11,7 +11,7 @@
   },
   "main": "./espresso",
   "dependencies": {
-    "jquery": "~1.7.0"
+    "jquery": ">=1.7.0"
   },
   "repository": {
     "type": "git",
@@ -26,7 +26,7 @@
   },
   "jam": {
     "dependencies": {
-      "jquery": "~1.7.0"
+      "jquery": ">=1.7.0"
     },
     "main": "espresso.compressed.js",
     "include": [
