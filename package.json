@@ -3,11 +3,12 @@
   "version": "1.0.0",
   "title": "espresso",
   "description": "Espresso library for OOP design patterns.",
-  "homepage": "https://github.com/peteromano/espresso",
+  "homepage": "http://peteromano.github.com/espresso/",
   "keywords": ["espresso", "jetfuel", "jetrunner"],
   "author": {
     "name": "Pete Romano",
-    "email": "pete.romano@yahoo.com"
+    "email": "pete.romano@yahoo.com",
+    "website": "http://peteromano.net"
   },
   "main": "./espresso",
   "dependencies": {
